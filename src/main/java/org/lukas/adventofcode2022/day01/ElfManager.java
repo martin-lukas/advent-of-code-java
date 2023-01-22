@@ -1,9 +1,10 @@
 package org.lukas.adventofcode2022.day01;
 
+import org.lukas.adventofcode2022.utils.FileUtils;
+
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 class ElfManager {
     static List<Elf> createElves(String caloriesString) {
@@ -13,29 +14,21 @@ class ElfManager {
                 .toList();
     }
 
-    static int getMaxCaloriesCarriedBySingleElf(List<Elf> elves) {
-        return elves.stream()
-                .map(Elf::totalCalories)
-                .mapToInt(Integer::intValue)
-                .max()
-                .orElse(0);
+    static Optional<Elf> getElfWithMostCalories(List<Elf> elves) {
+        return elves.stream().max(Elf.BY_TOTAL_CALORIES_ASC);
     }
 
     static List<Elf> getTopNElves(List<Elf> elves, int n) {
-        Comparator<Elf> byHighestTotalCalories = Comparator
-                .comparingInt(Elf::totalCalories)
-                .reversed();
-        Stream<Elf> sortedElves = elves.stream()
-                .sorted(byHighestTotalCalories);
-        int topBound = Math.min(n, elves.size());
-
-        return sortedElves.toList().subList(0, topBound);
+        return elves.stream()
+                .sorted(Elf.BY_TOTAL_CALORIES_ASC.reversed())
+                .limit(n)
+                .toList();
     }
 
     static int sumElfCalories(List<Elf> elves) {
         return elves.stream()
                 .map(Elf::totalCalories)
-                .mapToInt(Integer::intValue)
+                .mapToInt(i -> i)
                 .sum();
     }
 }

@@ -1,7 +1,6 @@
 package org.lukas.adventofcode2022.day01;
 
 import org.junit.jupiter.api.Test;
-import org.lukas.adventofcode2022.utils.FileUtils;
 
 import java.util.List;
 import java.util.Set;
@@ -21,7 +20,9 @@ class ElfManagerTest {
     void testFindingMaxCaloriesForSingleElf() {
         String elvesString = "10\n20\n\n30\n\n40\n50";
         List<Elf> elves = ElfManager.createElves(elvesString);
-        int maxCalories = ElfManager.getMaxCaloriesCarriedBySingleElf(elves);
+        int maxCalories = ElfManager.getElfWithMostCalories(elves)
+                .map(Elf::totalCalories)
+                .orElse(0);
 
         assertEquals(90, maxCalories);
     }

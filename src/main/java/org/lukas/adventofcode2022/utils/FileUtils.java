@@ -5,9 +5,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class FileUtils {
-    public static String toString(String filePath) {
+    private static final String PREFIX = "src/main/resources/";
+
+    public static String toString(String relativePath) {
+        return toString(relativePath, false);
+    }
+
+    public static String toString(String filePath, boolean isAbsolute) {
         try {
-            return Files.readString(Paths.get(filePath));
+            var fullPath = isAbsolute ? filePath : PREFIX + filePath;
+            return Files.readString(Paths.get(fullPath));
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
