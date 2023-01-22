@@ -1,24 +1,24 @@
 package org.lukas.adventofcode2022.day01;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
 class ElfManager {
-    private ElfManager() {
-    }
-
-    static List<Elf> loadElves(String calorieSource) throws IOException {
-        String[] elfCalories = Files
-                .readString(Paths.get(calorieSource))
-                .split("\n\n"); // each elf separated by empty line
-        return Arrays.stream(elfCalories)
+    static List<Elf> createElves(String caloriesString) {
+        // each elf separated by empty line
+        return Arrays.stream(caloriesString.split("\n\n"))
                 .map(Elf::from)
                 .toList();
+    }
+
+    static int getMaxCaloriesCarriedBySingleElf(List<Elf> elves) {
+        return elves.stream()
+                .map(Elf::totalCalories)
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
     }
 
     static List<Elf> getTopNElves(List<Elf> elves, int n) {
@@ -30,5 +30,12 @@ class ElfManager {
         int topBound = Math.min(n, elves.size());
 
         return sortedElves.toList().subList(0, topBound);
+    }
+
+    static int sumElfCalories(List<Elf> elves) {
+        return elves.stream()
+                .map(Elf::totalCalories)
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 }
