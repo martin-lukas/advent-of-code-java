@@ -50,27 +50,4 @@ class ElfManagerTest {
 
         assertEquals(145, ElfManager.sumElfCalories(elves));
     }
-
-    // CHALLENGE ANSWERS:
-
-    final String ELF_SRC = "src/test/resources/day01/elf-calories.txt";
-
-    @Test
-    void findElfWithMostCarriedCalories() {
-        String elvesString = FileUtils.toString(ELF_SRC);
-        List<Elf> elves = ElfManager.createElves(elvesString);
-        int maxCalories = ElfManager.getMaxCaloriesCarriedBySingleElf(elves);
-
-        assertEquals(68442, maxCalories);
-    }
-
-    @Test
-    void findTop3ElvesCarryingMostCalories() {
-        String elvesString = FileUtils.toString(ELF_SRC);
-        List<Elf> elves = ElfManager.createElves(elvesString);
-        List<Elf> top3Elves = ElfManager.getTopNElves(elves, 3);
-        int sumOfCalories = ElfManager.sumElfCalories(top3Elves);
-
-        assertEquals(204837, sumOfCalories);
-    }
 }
