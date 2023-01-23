@@ -16,7 +16,7 @@ class FileUtilsTest {
 
     @Test
     void testReadingAFileWithRelativePath() {
-        String str = FileUtils.toString("day01/elf-calories.txt");
+        String str = FileUtils.toString("day1/input.txt");
         assertFalse(str.isBlank());
     }
 

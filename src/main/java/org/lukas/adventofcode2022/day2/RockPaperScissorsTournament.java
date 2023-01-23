@@ -1,4 +1,4 @@
-package org.lukas.adventofcode2022.day02;
+package org.lukas.adventofcode2022.day2;
 
 import org.lukas.adventofcode2022.utils.FileUtils;
 
@@ -27,7 +27,7 @@ class RockPaperScissorsTournament {
     );
 
     public static void main(String[] args) {
-        List<String> lines = FileUtils.toLines("day02/rps-guide.txt");
+        List<String> lines = FileUtils.inputToLines(2);
         int naiveScore = lines.stream()
                 .map(pair -> NAIVE_CHOICE.get(pair.substring(pair.length() - 1))
                         + NAIVE_ALG.get(pair))
