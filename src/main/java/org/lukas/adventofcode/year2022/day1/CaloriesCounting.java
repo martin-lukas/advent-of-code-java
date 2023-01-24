@@ -1,7 +1,7 @@
-package org.lukas.adventofcode2022.day1;
+package org.lukas.adventofcode.year2022.day1;
 
-import org.lukas.adventofcode2022.utils.FileUtils;
-import org.lukas.adventofcode2022.utils.Mappers;
+import org.lukas.adventofcode.utils.FileUtils;
+import org.lukas.adventofcode.utils.Mappers;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -9,7 +9,7 @@ import java.util.List;
 
 class CaloriesCounting {
     public static void main(String[] args) {
-        var elvenString = FileUtils.inputToString(1);
+        var elvenString = FileUtils.inputToString(22, 1);
         List<Integer> elves = Arrays.stream(elvenString.split("\n\n"))
                 .map(elfStr -> elfStr.split("\n"))
                 .map(Mappers::stringsToInts)

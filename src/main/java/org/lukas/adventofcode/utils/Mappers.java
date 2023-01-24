@@ -1,4 +1,4 @@
-package org.lukas.adventofcode2022.utils;
+package org.lukas.adventofcode.utils;
 
 import java.util.Arrays;
 

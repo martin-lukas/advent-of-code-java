@@ -1,4 +1,4 @@
-package org.lukas.adventofcode2022.utils;
+package org.lukas.adventofcode.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,14 +7,14 @@ import java.util.List;
 
 public class FileUtils {
     private static final String PREFIX = "src/main/resources/";
-    private static final String REL_PATH = "day%d/input.txt";
+    private static final String REL_PATH = "year%d/day%d/input.txt";
 
-    public static List<String> inputToLines(int day) {
-        return toLines(REL_PATH.formatted(day));
+    public static List<String> inputToLines(int year, int day) {
+        return toLines(REL_PATH.formatted(year, day));
     }
 
-    public static String inputToString(int day) {
-        return toString(REL_PATH.formatted(day));
+    public static String inputToString(int year, int day) {
+        return toString(REL_PATH.formatted(year, day));
     }
 
     public static List<String> toLines(String relativePath) {

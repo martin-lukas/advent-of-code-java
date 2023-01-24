@@ -1,6 +1,7 @@
 package org.lukas.adventofcode2022.utils;
 
 import org.junit.jupiter.api.Test;
+import org.lukas.adventofcode.utils.FileUtils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +17,7 @@ class FileUtilsTest {
 
     @Test
     void testReadingAFileWithRelativePath() {
-        String str = FileUtils.toString("day1/input.txt");
+        String str = FileUtils.toString("year22/day1/input.txt");
         assertFalse(str.isBlank());
     }
 
