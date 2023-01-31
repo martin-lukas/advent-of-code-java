@@ -1,4 +1,4 @@
-package org.lukas.adventofcode.year2022.day1;
+package org.lukas.adventofcode.year22.day1;
 
 import org.lukas.adventofcode.utils.FileUtils;
 import org.lukas.adventofcode.utils.Mappers;

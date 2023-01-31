@@ -1,4 +1,4 @@
-package org.lukas.adventofcode.year2022.day2;
+package org.lukas.adventofcode.year22.day2;
 
 import org.lukas.adventofcode.utils.FileUtils;
 
