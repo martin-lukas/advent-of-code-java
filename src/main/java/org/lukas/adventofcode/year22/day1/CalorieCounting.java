@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-class CaloriesCounting {
+class CalorieCounting {
     public static void main(String[] args) {
         var elvenString = FileUtils.inputToString(22, 1);
         List<Integer> elves = Arrays.stream(elvenString.split("\n\n"))

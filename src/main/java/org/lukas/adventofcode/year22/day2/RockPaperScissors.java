@@ -5,7 +5,7 @@ import org.lukas.adventofcode.utils.FileUtils;
 import java.util.List;
 import java.util.Map;
 
-class RockPaperScissorsTournament {
+class RockPaperScissors {
     private static final Map<String, Integer> NAIVE_CHOICE = Map.of(
             "X", 1, "Y", 2, "Z", 3
     );
