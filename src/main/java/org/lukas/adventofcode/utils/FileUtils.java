@@ -1,5 +1,7 @@
 package org.lukas.adventofcode.utils;
 
+import static java.util.function.Predicate.not;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -29,9 +31,7 @@ public class FileUtils {
   public static List<String> toLines(String filePath, boolean isAbsolute) {
     try {
       var fullPath = isAbsolute ? filePath : PREFIX + filePath;
-      return Files.readAllLines(Paths.get(fullPath)).stream()
-          .filter(String::isBlank)
-          .toList();
+      return Files.readAllLines(Paths.get(fullPath)).stream().filter(not(String::isBlank)).toList();
     } catch (IOException ex) {
       throw new RuntimeException(ex);
     }
