@@ -1,6 +1,7 @@
 package org.lukas.adventofcode.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ListUtils {
@@ -17,6 +18,10 @@ public class ListUtils {
    */
   public static Integer max(List<Integer> list) {
     return list.stream().mapToInt(Integer::intValue).max().orElseThrow();
+  }
+
+  public static Integer product(Collection<Integer> list) {
+    return list.stream().reduce(1, (acc, cur) -> acc * cur);
   }
 
   public static <T> List<T> merge(List<T> list1, List<T> list2) {
