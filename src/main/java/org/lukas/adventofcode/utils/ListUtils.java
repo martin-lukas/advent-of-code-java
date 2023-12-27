@@ -20,7 +20,7 @@ public class ListUtils {
     return list.stream().mapToInt(Integer::intValue).max().orElseThrow();
   }
 
-  public static Integer sum(List<Integer> list) {
+  public static Integer sum(Collection<Integer> list) {
     return list.stream().mapToInt(Integer::intValue).sum();
   }
 
