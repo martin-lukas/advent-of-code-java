@@ -1,6 +1,7 @@
 package org.lukas.adventofcode.year23;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.lukas.adventofcode.utils.AssertionUtils.assertListEquals;
 
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -34,7 +35,7 @@ class Day3Test {
         ......#...
         617....356""";
     var parts = Day3.getParts(Day3.parseSchematic(schematic));
-    assertEquals(List.of(467, 35, 633, 356), parts.stream().map(Part::value).toList());
+    assertListEquals(List.of(467, 35, 633, 356), parts.stream().map(Part::value).toList());
   }
 
   @Test
