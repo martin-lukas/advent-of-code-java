@@ -2,8 +2,10 @@ package org.lukas.adventofcode.year23;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.lukas.adventofcode.utils.FileUtils;
+import org.lukas.adventofcode.year23.Day5.Aspect;
 
 class Day5Test {
 
@@ -43,8 +45,62 @@ class Day5Test {
       56 93 4""";
 
   @Test
+  void testParseSourceDestRanges() {
+    var rangeSections = Arrays.copyOfRange(EXAMPLE.split("\n\n"), 1, 8);
+    var rangeMap = Day5.parseSourceDestRanges(rangeSections);
+    assertEquals(Aspect.values().length, rangeMap.keySet().size());
+    assertEquals(2, rangeMap.get(Aspect.SEED).size());
+    var rangeAndDelta = rangeMap.get(Aspect.SEED).getLast();
+    assertEquals(50, rangeAndDelta.range().start());
+    assertEquals(97, rangeAndDelta.range().end());
+  }
+
+  @Test
+  void testGetLocationForSeed() {
+    var rangeSections = Arrays.copyOfRange(EXAMPLE.split("\n\n"), 1, 8);
+    var rangeMap = Day5.parseSourceDestRanges(rangeSections);
+    assertEquals(82, Day5.getLocation(79, rangeMap));
+  }
+
+  @Test
+  void testMinLocationForSeeds() {
+    var sections = EXAMPLE.split("\n\n");
+    var seeds = Day5.parseSeeds(sections[0]);
+    var rangesMap = Day5.parseSourceDestRanges(Arrays.copyOfRange(sections, 1, 8));
+    assertEquals(35L, Day5.minLocationForSeeds(seeds, rangesMap));
+  }
+
+  @Test
+  void testX() {
+    var sections = EXAMPLE.split("\n\n");
+    var seedRange = Day5.parseSeedRanges(sections[0]).getLast();
+    var rangesMap = Day5.parseSourceDestRanges(Arrays.copyOfRange(sections, 1, 8));
+    assertEquals(46L, Day5.minLocationForSeedsInRanges(seedRanges, rangesMap));
+  }
+
+  @Test
+  void testMinLocationForSeedRanges() {
+    var sections = EXAMPLE.split("\n\n");
+    var seedRanges = Day5.parseSeedRanges(sections[0]);
+    var rangesMap = Day5.parseSourceDestRanges(Arrays.copyOfRange(sections, 1, 8));
+    assertEquals(46L, Day5.minLocationForSeedsInRanges(seedRanges, rangesMap));
+  }
+
+  @Test
   void testPart1() {
-    var res = Day5.x(FileUtils.inputToString(23, 5));
-    assertEquals(1, res);
+    var input = FileUtils.inputToString(23, 5);
+    var sections = input.split("\n\n");
+    var seeds = Day5.parseSeeds(sections[0]);
+    var rangesMap = Day5.parseSourceDestRanges(Arrays.copyOfRange(sections, 1, 8));
+    assertEquals(579439039, Day5.minLocationForSeeds(seeds, rangesMap));
+  }
+
+  //@Test
+  void testPart2() {
+    var input = FileUtils.inputToString(23, 5);
+    var sections = input.split("\n\n");
+    var seedRanges = Day5.parseSeedRanges(sections[0]);
+    var rangesMap = Day5.parseSourceDestRanges(Arrays.copyOfRange(sections, 1, 8));
+    assertEquals(0L, Day5.minLocationForSeedsInRanges(seedRanges, rangesMap));
   }
 }

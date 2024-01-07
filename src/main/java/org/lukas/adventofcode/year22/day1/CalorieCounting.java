@@ -6,6 +6,7 @@ import org.lukas.adventofcode.utils.ArrayUtils;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import org.lukas.adventofcode.utils.ListUtils;
 
 class CalorieCounting {
     public static void main(String[] args) {
@@ -13,7 +14,7 @@ class CalorieCounting {
         List<Integer> elves = Arrays.stream(elvenString.split("\n\n"))
                 .map(elfStr -> elfStr.split("\n"))
                 .map(ArrayUtils::stringsToInts)
-                .map(ArrayUtils::sumIntArr)
+                .map(ListUtils::sum)
                 .toList();
 
         var maxCalories = elves.stream()

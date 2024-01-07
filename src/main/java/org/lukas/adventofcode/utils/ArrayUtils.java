@@ -1,15 +1,18 @@
 package org.lukas.adventofcode.utils;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class ArrayUtils {
-    public static int[] stringsToInts(String[] strings) {
+    public static List<Integer> stringsToInts(String[] strings) {
         return Arrays.stream(strings)
-                .mapToInt(Integer::parseInt)
-                .toArray();
+                .map(Integer::parseInt)
+                .toList();
     }
 
-    public static int sumIntArr(int[] array) {
-        return Arrays.stream(array).sum();
+    public static List<Long> stringsToLongs(String[] strings) {
+        return Arrays.stream(strings)
+            .map(Long::parseLong)
+            .toList();
     }
 }
